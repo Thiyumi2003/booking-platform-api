@@ -38,9 +38,23 @@ JWT_EXPIRES_IN=3600s
 npm run start:dev
 ```
 
-Open the Swagger UI at:
+Open the Swagger UI locally at:
 
 - `http://localhost:3000/api`
+
+When deployed on Render:
+
+- API base URL: `https://booking-platform-api-ekfd.onrender.com/`
+- Swagger UI: `https://booking-platform-api-ekfd.onrender.com/api`
+
+## Screenshots
+
+![Swagger UI](./screenshots/swagger.png)
+
+<p align="center">
+  <img src="./screenshots/booking create.png" alt="Booking Create" width="45%" />
+  <img src="./screenshots/service create.png" alt="Service Create" width="45%" />
+</p>
 
 ## Available scripts
 
