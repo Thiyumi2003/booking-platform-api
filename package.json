@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build",
+    "build": "npx nest build",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:prod": "node dist/main"
@@ -29,7 +29,10 @@
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
     "swagger-ui-express": "^5.0.1",
-    "typeorm": "^1.0.0"
+    "typeorm": "^0.3.25"
+  },
+  "engines": {
+    "node": "22.x"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
