@@ -1,9 +1,5 @@
 ﻿# Booking Platform API
 
-<p align="center">
-  <img src="./image.png" alt="Booking Platform API" width="600" />
-</p>
-
 ## Overview
 
 Booking Platform API is a NestJS backend service for managing services, bookings, and authenticated users. It supports REST endpoints for authentication, service management, and booking creation.
