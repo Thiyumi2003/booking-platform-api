@@ -29,6 +29,14 @@ export class ServicesService {
     return service;
   }
 
+  async findByLegacyId(legacyId: number): Promise<ServiceEntity> {
+    const service = await this.serviceRepository.findOne({ where: { legacyId } });
+    if (!service) {
+      throw new NotFoundException('Service not found (legacy id)');
+    }
+    return service;
+  }
+
   async update(id: string, updateServiceDto: UpdateServiceDto): Promise<ServiceEntity> {
     const service = await this.findOne(id);
     Object.assign(service, updateServiceDto);

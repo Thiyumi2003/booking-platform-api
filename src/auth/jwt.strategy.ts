@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { jwtConstants } from './jwt.constants';
 
 export function extractJwtTokenFromHeader(authHeader?: string): string | null {
   if (typeof authHeader !== 'string') {
@@ -18,18 +18,24 @@ export function extractJwtTokenFromHeader(authHeader?: string): string | null {
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor() {
+  constructor(private readonly configService: ConfigService) {
     super({
       jwtFromRequest: (req) => {
-        const bearerToken = ExtractJwt.fromAuthHeaderAsBearerToken()(req);
-        if (bearerToken) {
-          return bearerToken;
+        const authHeader = req?.headers?.authorization;
+        const tokenFromHeader = extractJwtTokenFromHeader(authHeader);
+        if (tokenFromHeader) {
+          return tokenFromHeader;
         }
 
-        return extractJwtTokenFromHeader(req?.headers?.authorization);
+        const bearerToken = ExtractJwt.fromAuthHeaderAsBearerToken()(req);
+        if (bearerToken) {
+          return extractJwtTokenFromHeader(bearerToken);
+        }
+
+        return null;
       },
       ignoreExpiration: false,
-      secretOrKey: jwtConstants.secret,
+      secretOrKey: configService.get<string>('app.jwtSecret') ?? 'your-super-secret-key',
     });
   }
 

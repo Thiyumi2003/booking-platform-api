@@ -21,4 +21,8 @@ export class CreateServiceDto {
   @IsOptional()
   @IsBoolean()
   isActive?: boolean;
+
+  @IsOptional()
+  @IsNumber()
+  legacyId?: number;
 }

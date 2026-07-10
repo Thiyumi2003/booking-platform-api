@@ -23,6 +23,10 @@ export class BookingsService {
   async create(createBookingDto: CreateBookingDto): Promise<Booking> {
     const { userId, serviceId, startDate, endDate } = createBookingDto;
 
+    if (!startDate || !endDate) {
+      throw new BadRequestException('startDate and endDate are required');
+    }
+
     const start = new Date(startDate);
     const end = new Date(endDate);
     const now = new Date();

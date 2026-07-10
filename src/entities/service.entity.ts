@@ -17,6 +17,9 @@ export class ServiceEntity {
 
   @Column({ type: 'int', nullable: true })
   duration?: number;
+ 
+  @Column({ type: 'int', nullable: true })
+  legacyId?: number;
 
   @Column({ type: 'boolean', default: true })
   isActive: boolean;
