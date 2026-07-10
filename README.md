@@ -25,6 +25,10 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+<p align="center">
+  <img src="./image.png" alt="Booking Platform" width="600" />
+</p>
+
 ## Project setup
 
 ```bash
